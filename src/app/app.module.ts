@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Router, Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { NotesComponent } from './notes/notes.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+
 
 const appRoutes: Routes = [
   { path: 'notes', component: NotesComponent },
@@ -27,6 +31,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
   ],
   providers: [],
