@@ -3,6 +3,7 @@
   <div class="row" style="margin-top:12px;">
     <div class="col-md-8">
       <input type="text"
+             [(ngModel)]="searchText"
              class="form-control"
              style="width: 100%;"
              placeholder="Search notes...">
@@ -55,25 +56,13 @@
         </div>
       </div>
       <div class="row">
-        <div *ngFor="let note of notes" class="card bg-warning" style="border:4px solid white;">
-          <div>
-            <!--title-->
-            <input  type="text"
-                    [(ngModel)]="note.title"
-                    (change)="updateNote(note)"
-                    class="input-label-lg"
-                    maxlength="18" style="width: 80%"
-            />
-            <a  (click)="deleteNote(note)"
-                class="pull-right text-danger">
-              <i class="fa fa-trash-o"></i>
-            </a>
-            <textarea class="input-label" style="width: 100%" rows="6"
-                      [(ngModel)]="note.text"
-                      (change)="updateNote(note)"></textarea>
-            <strong class="text-info" style="font-size: small"></strong>
-          </div>
-        </div>
+        <!-- Note List -->
+        <app-note *ngFor="let n of notes | noteTextFilter:searchText"
+                  [note]="n"
+                  (noteUpdated)="updateNote($event)"
+                  (noteDeleted)="deleteNote($event)">
+        </app-note>
+
       </div>
     </div>
   </div>

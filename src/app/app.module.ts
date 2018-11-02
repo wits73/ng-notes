@@ -10,6 +10,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { NotesComponent } from './notes/notes.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NoteComponent } from './notes/note/note.component';
+import { NoteTextFilterPipe } from './shared/note-text-filter.pipe';
 
 
 const appRoutes: Routes = [
@@ -27,6 +29,8 @@ const appRoutes: Routes = [
     FeedbackComponent,
     NotesComponent,
     NotFoundComponent,
+    NoteComponent,
+    NoteTextFilterPipe,
 
   ],
   imports: [

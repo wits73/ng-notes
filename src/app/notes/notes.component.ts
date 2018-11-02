@@ -12,6 +12,7 @@ export class NotesComponent implements OnInit {
   notebooks: Notebook[] = [];
   notes: Note[] = [];
   selectedNotebook: Notebook;
+  searchText: string;
 
   constructor(private apiService: ApiService) { }
 
@@ -64,6 +65,16 @@ export class NotesComponent implements OnInit {
         }
       );
     }
+  }
+
+  updateNote(updateNote: Note) {
+    this.apiService.saveNote(updateNote).subscribe(
+      res => {
+      },
+      err => {
+        alert('An error has occurred while saving the notebook');
+      }
+    );
   }
 
   selectNotebook (notebook: Notebook) {
@@ -140,14 +151,6 @@ export class NotesComponent implements OnInit {
     }
   }
 
-  updateNote(updateNote: Note) {
-    this.apiService.saveNote(updateNote).subscribe(
-      res => {
-      },
-      err => {
-        alert('An error has occurred while saving the notebook');
-      }
-    );
-  }
+
 
 }
